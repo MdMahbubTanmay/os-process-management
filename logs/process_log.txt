@@ -1,0 +1,48 @@
+[2026-11-17 22:10:40.209] PARENT  pid=5355 ppid=3783 : starting, command='ls', timeout=0.0s
+[2026-11-17 22:10:40.209] CHILD   pid=5356 ppid=5355 : calling execvp('ls')
+[2026-11-17 22:10:40.209] PARENT  pid=5355 : child 5356 is running, waiting with waitpid()
+[2026-11-17 22:10:40.259] PARENT  child 5356 terminated NORMALLY, exit status=0, runtime=0.050s
+[2026-11-17 22:14:15.083] PARENT  pid=6506 ppid=3783 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:14:15.083] CHILD   pid=6507 ppid=6506 : calling execvp('sh')
+[2026-11-17 22:14:15.083] PARENT  pid=6506 : child 6507 is running, waiting with waitpid()
+[2026-11-17 22:14:15.133] PARENT  child 6507 terminated NORMALLY, exit status=3, runtime=0.050s
+[2026-11-17 22:16:42.476] PARENT  pid=6790 ppid=3783 : starting, command='prog.c', timeout=0.0s
+[2026-11-17 22:16:42.476] CHILD   pid=6791 ppid=6790 : calling execvp('prog.c')
+[2026-11-17 22:16:42.477] PARENT  pid=6790 : exec of 'prog.c' FAILED in child 6791: No such file or directory
+[2026-11-17 22:16:42.477] PARENT  child 6791 exited with status 127 (exec failure)
+[2026-11-17 22:18:26.376] PARENT  pid=6973 ppid=3783 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:18:26.376] CHILD   pid=6974 ppid=6973 : calling execvp('sh')
+[2026-11-17 22:18:26.376] PARENT  pid=6973 : child 6974 is running, waiting with waitpid()
+[2026-11-17 22:18:26.476] PARENT  child 6974 KILLED BY SIGNAL 11 (Segmentation fault), runtime=0.100s
+[2026-11-17 22:22:25.500] PARENT  pid=7183 ppid=3783 : starting, command='sleep', timeout=2.0s
+[2026-11-17 22:22:25.500] CHILD   pid=7184 ppid=7183 : calling execvp('sleep')
+[2026-11-17 22:22:25.500] PARENT  pid=7183 : child 7184 is running, waiting with waitpid()
+[2026-11-17 22:22:27.507] PARENT  TIMEOUT after 2.01s: sending SIGTERM to process group 7184
+[2026-11-17 22:22:27.557] PARENT  child 7184 KILLED BY SIGNAL 15 (Terminated), runtime=2.057s [caused by timeout mechanism]
+[2026-11-17 22:23:28.974] PARENT  pid=7304 ppid=3783 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:23:28.974] CHILD   pid=7305 ppid=7304 : calling execvp('sh')
+[2026-11-17 22:23:28.974] PARENT  pid=7304 : child 7305 is running, waiting with waitpid()
+[2026-11-17 22:23:29.074] PARENT  child 7305 KILLED BY SIGNAL 11 (Segmentation fault), runtime=0.100s
+[2026-11-17 22:39:20.377] PARENT  pid=8627 ppid=3783 : starting, command='sleep', timeout=0.0s
+[2026-11-17 22:39:20.377] CHILD   pid=8628 ppid=8627 : calling execvp('sleep')
+[2026-11-17 22:39:20.377] PARENT  pid=8627 : child 8628 is running, waiting with waitpid()
+[2026-11-17 22:40:20.380] PARENT  child 8628 terminated NORMALLY, exit status=0, runtime=60.003s
+[2026-11-17 22:40:56.882] PARENT  pid=8939 ppid=3783 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:40:56.882] CHILD   pid=8940 ppid=8939 : calling execvp('sh')
+[2026-11-17 22:40:56.882] PARENT  pid=8939 : child 8940 is running, waiting with waitpid()
+[2026-11-17 22:41:26.928] PARENT  child 8940 terminated NORMALLY, exit status=0, runtime=30.046s
+[2026-11-17 22:43:39.107] PARENT  pid=9586 ppid=3783 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:43:39.107] CHILD   pid=9587 ppid=9586 : calling execvp('sh')
+[2026-11-17 22:43:39.107] PARENT  pid=9586 : child 9587 is running, waiting with waitpid()
+[2026-11-17 22:44:09.145] PARENT  child 9587 terminated NORMALLY, exit status=0, runtime=30.038s
+[2026-11-17 22:46:19.325] PARENT  pid=10033 ppid=3783 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:46:19.325] CHILD   pid=10034 ppid=10033 : calling execvp('sh')
+[2026-11-17 22:46:19.325] PARENT  pid=10033 : child 10034 is running, waiting with waitpid()
+[2026-11-17 22:46:49.347] PARENT  child 10034 terminated NORMALLY, exit status=0, runtime=30.023s
+[2026-11-17 22:47:07.805] PARENT  pid=10174 ppid=3783 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:47:07.805] CHILD   pid=10175 ppid=10174 : calling execvp('sh')
+[2026-11-17 22:47:07.805] PARENT  pid=10174 : child 10175 is running, waiting with waitpid()
+[2026-11-17 22:47:25.678] PARENT  pid=10347 ppid=3783 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:47:25.678] CHILD   pid=10348 ppid=10347 : calling execvp('sh')
+[2026-11-17 22:47:25.678] PARENT  pid=10347 : child 10348 is running, waiting with waitpid()
+[2026-11-17 22:47:55.718] PARENT  child 10348 terminated NORMALLY, exit status=0, runtime=30.040s

@@ -1,0 +1,85 @@
+./tests/run_tests.sh
+=== TEST: T1 normal exit (ls) ===
+[2026-11-17 22:35:59.499] PARENT  pid=8037 ppid=8034 : starting, command='ls', timeout=0.0s
+[2026-11-17 22:35:59.499] CHILD   pid=8038 ppid=8037 : calling execvp('ls')
+[2026-11-17 22:35:59.499] PARENT  pid=8037 : child 8038 is running, waiting with waitpid()
+total 0
+drwx------ 2 mdmahbubtanmay mdmahbubtanmay 60 Nov 17 21:43 mcp-NP9x60
+drwxr-xr-x 2 mdmahbubtanmay mdmahbubtanmay 60 Nov 17 22:12 noctalia-weather
+drwxr-xr-x 2 mdmahbubtanmay mdmahbubtanmay 60 Nov 17 21:42 onedrive-gui
+srwx------ 1 sddm           sddm            0 Nov 17 21:41 sddm-:0-shAigq
+srwxr-xr-x 1 root           root            0 Nov 17 21:41 sddm-auth-3fbb0a07-a91a-46f0-a273-715d90b9cfcf
+drwx------ 3 root           root           60 Nov 17 21:41 systemd-private-4f311979f61d4a64b87479517a3a1019-ananicy-cpp.service-EQnCy6
+drwx------ 3 root           root           60 Nov 17 21:41 systemd-private-4f311979f61d4a64b87479517a3a1019-bluetooth.service-feIO81
+drwx------ 3 root           root           60 Nov 17 21:41 systemd-private-4f311979f61d4a64b87479517a3a1019-NetworkManager.service-cw7gad
+drwx------ 3 root           root           60 Nov 17 21:42 systemd-private-4f311979f61d4a64b87479517a3a1019-polkit.service-yUv5Wa
+drwx------ 3 root           root           60 Nov 17 21:42 systemd-private-4f311979f61d4a64b87479517a3a1019-power-profiles-daemon.service-p3jTs3
+drwx------ 3 root           root           60 Nov 17 21:41 systemd-private-4f311979f61d4a64b87479517a3a1019-systemd-logind.service-ovgDts
+drwx------ 3 root           root           60 Nov 17 21:42 systemd-private-4f311979f61d4a64b87479517a3a1019-upower.service-G3mz84
+drwx------ 2 mdmahbubtanmay mdmahbubtanmay 60 Nov 17 21:43 vscode-ah-526e0abbf305
+[2026-11-17 22:35:59.549] PARENT  child 8038 terminated NORMALLY, exit status=0, runtime=0.050s
+>>> PASS (T1 normal exit (ls)): rc=0
+
+=== TEST: T2 non-zero exit status (exit 3) ===
+[2026-11-17 22:35:59.550] PARENT  pid=8041 ppid=8034 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:35:59.551] CHILD   pid=8042 ppid=8041 : calling execvp('sh')
+[2026-11-17 22:35:59.551] PARENT  pid=8041 : child 8042 is running, waiting with waitpid()
+[2026-11-17 22:35:59.601] PARENT  child 8042 terminated NORMALLY, exit status=3, runtime=0.050s
+>>> PASS (T2 non-zero exit status (exit 3)): rc=3
+
+=== TEST: T3 exec failure (bad command) ===
+[2026-11-17 22:35:59.602] PARENT  pid=8043 ppid=8034 : starting, command='no_such_program_xyz', timeout=0.0s
+[2026-11-17 22:35:59.602] CHILD   pid=8044 ppid=8043 : calling execvp('no_such_program_xyz')
+[2026-11-17 22:35:59.602] PARENT  pid=8043 : exec of 'no_such_program_xyz' FAILED in child 8044: No such file or directory
+[2026-11-17 22:35:59.602] PARENT  child 8044 exited with status 127 (exec failure)
+>>> PASS (T3 exec failure (bad command)): rc=127
+
+=== TEST: T4 killed by SIGSEGV ===
+[2026-11-17 22:35:59.603] PARENT  pid=8045 ppid=8034 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:35:59.603] CHILD   pid=8046 ppid=8045 : calling execvp('sh')
+[2026-11-17 22:35:59.603] PARENT  pid=8045 : child 8046 is running, waiting with waitpid()
+[2026-11-17 22:35:59.703] PARENT  child 8046 KILLED BY SIGNAL 11 (Segmentation fault), runtime=0.101s
+>>> PASS (T4 killed by SIGSEGV): rc=139
+
+=== TEST: T5 killed by SIGKILL ===
+[2026-11-17 22:35:59.704] PARENT  pid=8056 ppid=8034 : starting, command='sh', timeout=0.0s
+[2026-11-17 22:35:59.704] CHILD   pid=8057 ppid=8056 : calling execvp('sh')
+[2026-11-17 22:35:59.704] PARENT  pid=8056 : child 8057 is running, waiting with waitpid()
+[2026-11-17 22:35:59.755] PARENT  child 8057 KILLED BY SIGNAL 9 (Killed), runtime=0.050s
+>>> PASS (T5 killed by SIGKILL): rc=137
+
+=== TEST: T6 boundary: command, no arguments ===
+[2026-11-17 22:35:59.756] PARENT  pid=8058 ppid=8034 : starting, command='true', timeout=0.0s
+[2026-11-17 22:35:59.756] CHILD   pid=8059 ppid=8058 : calling execvp('true')
+[2026-11-17 22:35:59.756] PARENT  pid=8058 : child 8059 is running, waiting with waitpid()
+[2026-11-17 22:35:59.806] PARENT  child 8059 terminated NORMALLY, exit status=0, runtime=0.051s
+>>> PASS (T6 boundary: command, no arguments): rc=0
+
+=== TEST: T7 timeout kills long child ===
+[2026-11-17 22:35:59.814] PARENT  pid=8060 ppid=8034 : starting, command='sleep', timeout=2.0s
+[2026-11-17 22:35:59.814] CHILD   pid=8061 ppid=8060 : calling execvp('sleep')
+[2026-11-17 22:35:59.815] PARENT  pid=8060 : child 8061 is running, waiting with waitpid()
+[2026-11-17 22:36:01.822] PARENT  TIMEOUT after 2.01s: sending SIGTERM to process group 8061
+[2026-11-17 22:36:01.873] PARENT  child 8061 KILLED BY SIGNAL 15 (Terminated), runtime=2.059s [caused by timeout mechanism]
+>>> PASS (T7 timeout kills long child): rc=143
+
+=== TEST: T8 child ignores SIGTERM -> SIGKILL ===
+[2026-11-17 22:36:01.874] PARENT  pid=8062 ppid=8034 : starting, command='sh', timeout=1.0s
+[2026-11-17 22:36:01.874] CHILD   pid=8063 ppid=8062 : calling execvp('sh')
+[2026-11-17 22:36:01.874] PARENT  pid=8062 : child 8063 is running, waiting with waitpid()
+[2026-11-17 22:36:02.877] PARENT  TIMEOUT after 1.00s: sending SIGTERM to process group 8063
+[2026-11-17 22:36:04.885] PARENT  child ignored SIGTERM: sending SIGKILL to group 8063
+[2026-11-17 22:36:04.935] PARENT  child 8063 KILLED BY SIGNAL 9 (Killed), runtime=3.062s [caused by timeout mechanism]
+>>> PASS (T8 child ignores SIGTERM -> SIGKILL): rc=137
+
+=== TEST: T9 child finishes before timeout ===
+[2026-11-17 22:36:04.937] PARENT  pid=8065 ppid=8034 : starting, command='sleep', timeout=5.0s
+[2026-11-17 22:36:04.937] CHILD   pid=8066 ppid=8065 : calling execvp('sleep')
+[2026-11-17 22:36:04.937] PARENT  pid=8065 : child 8066 is running, waiting with waitpid()
+[2026-11-17 22:36:05.939] PARENT  child 8066 terminated NORMALLY, exit status=0, runtime=1.002s
+>>> PASS (T9 child finishes before timeout): rc=0
+
+=== TEST: T10 invalid usage (no command) ===
+>>> PASS (T10): rc=2
+
+SUMMARY: 10 passed, 0 failed
